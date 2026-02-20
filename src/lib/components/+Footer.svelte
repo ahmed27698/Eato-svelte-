@@ -1,9 +1,10 @@
 <script>
+    import { MoveRight } from "lucide-svelte";
 </script>
 
-<footer>
-    <div>
-        <div>
+<footer class="bg-black flex md:flex-row flex-col  text-white py-16 lg:px-24 md:px-16 px-4">
+    <div class="flex items-start flex-col gap-5 lg:w-6/12">
+        <div class="flex flex-col gap-4">
             <svg
                 width="102"
                 height="32"
@@ -61,11 +62,53 @@
                     fill="white"
                 />
             </svg>
+            <p>We Drive Real Result, More Traffic, More Leads, more Growth!</p>
         </div>
-        <p>We Drive Real Result, More Traffic, More Leads, more Growth!</p>
-        <p>Subscribe now for exclusive offers and the latest food updates!</p>
+        <div class=" flex flex-col gap-2 mt-10">
+            <p>
+                Subscribe now for exclusive offers and the latest food updates!
+            </p>
 
-        <p>3891 Ranchview Dr. Richardson, California 62639</p>
+            <div
+                class="flex gap-4 px-4 py-2 bg-white/10 justify-between rounded-2xl lg:w-7/12"
+            >
+                <input
+                    type="text"
+                    class="outline-none"
+                    placeholder="Enter Your Email Address"
+                />
+                <MoveRight />
+            </div>
+        </div>
+        <p class="mt-10 lg:w-4/12">
+            3891 Ranchview Dr. Richardson, California 62639
+        </p>
     </div>
-    <div></div>
+    <div class="flex items-start flex-col gap-5 lg:w-6/12">
+        <div class="flex flex-wrap items-start justify-between w-full">
+            <div class="flex flex-col gap-3 grow">
+                <p class="font-bold">Home</p>
+                {#each Array.from({ length: 5 }) as _}
+                    <p class="text-sm opacity-70">Vision & Mission</p>
+                {/each}
+            </div>
+            <div class="flex flex-col gap-3 grow">
+                <p class="font-bold">About Us</p>
+                {#each Array.from({ length: 5 }) as _}
+                    <p class="text-sm opacity-70">Vision & Mission</p>
+                {/each}
+            </div>
+            <div class="flex flex-col gap-3 grow">
+                <p class="font-bold">Service</p>
+                {#each Array.from({ length: 5 }) as _}
+                    <p class="text-sm opacity-70">Vision & Mission</p>
+                {/each}
+            </div>
+        </div>
+        <div class="flex gap-6 mt-10 justify-center w-full">
+            <p>Privacy Policy</p>
+            <p>Terms of Service</p>
+            <p>2025 Eato, All right reserved</p>
+        </div>
+    </div>
 </footer>

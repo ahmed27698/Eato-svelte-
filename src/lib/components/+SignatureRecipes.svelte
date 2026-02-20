@@ -2,7 +2,6 @@
     import { Skeleton } from "$lib/components/ui/skeleton/index.js";
     import { CircleArrowRight, CircleArrowLeft } from "lucide-svelte";
     import { fade } from "svelte/transition";
-    import fill from "./+Star.svelte";
     import Star from "./+Star.svelte";
     interface Recipe {
         name: string;
@@ -51,7 +50,6 @@
 </script>
 
 <section class="bg-black py-16 text-white lg:px-24 md:px-16 px-4">
-    <!-- Header -->
     <div class="flex justify-between items-center">
         <div>
             <h2 class="text-3xl font-semibold">Our Signature Menu</h2>
@@ -63,20 +61,19 @@
         </div>
 
         <div class="flex gap-4">
-            <button on:click={LeftArrow} aria-label="Previous">
+            <button on:click={LeftArrow} aria-label="Previous" class="cursor-pointer">
                 <CircleArrowLeft />
             </button>
-            <button on:click={RightArrow} aria-label="Next">
+            <button on:click={RightArrow} aria-label="Next" class="cursor-pointer">
                 <CircleArrowRight />
             </button>
         </div>
     </div>
 
-    <!-- Slider -->
     <div class="flex justify-center gap-6 mt-12">
         {#if isLoading}
             {#each Array.from({ length: 4 })}
-                <Skeleton class="w-3/12 h-105" />
+                <Skeleton class="lg:w-3/12 w-5/12 h-105" />
             {/each}
         {:else}
             {#each Array.from({ length: 4 }) as _, i}
@@ -86,12 +83,11 @@
                 <div
                     role="button"
                     tabindex="0"
-                    class="w-3/12 flex flex-col relative overflow-hidden rounded-xl"
+                    class="lg:w-3/12  flex flex-col border-red-700 border-10 relative overflow-hidden rounded-xl"
                     on:mouseenter={() => (hoveredIndex = index)}
                     on:mouseleave={() => (hoveredIndex = null)}
                 >
-                    <!-- Image -->
-                    <div class="h-64 overflow-hidden relative rounded-xl">
+                    <div class="h-64 w-full overflow-hidden relative rounded-xl">
                         {#if !loadedImages[index]}
                             <Skeleton class="absolute inset-0" />
                         {/if}
@@ -99,6 +95,7 @@
                         <img
                             src={r.image}
                             alt={r.name}
+                            loading="lazy"
                             class="w-full h-full object-cover transition-transform duration-300 ease-out
                             {hoveredIndex === index
                                 ? '-translate-y-10'

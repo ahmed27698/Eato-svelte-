@@ -57,6 +57,7 @@
             <p>Happy Customers Served Daily</p>
         </div>
         <img
+            loading="lazy"
             bind:this={box}
             on:mouseenter={() => {
                 box.classList.add("skew-y-1");
